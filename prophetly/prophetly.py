@@ -24,7 +24,7 @@ from tornado import ioloop
 from server import make_app
 
 def main():
-    arguments = docopt(__doc__, version='Prophetly Server 0.1.0')
+    arguments = docopt(__doc__, version='Prophetly Server 0.1.0.h')
     print(arguments)
 
     app = make_app()

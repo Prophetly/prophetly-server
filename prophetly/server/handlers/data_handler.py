@@ -13,16 +13,16 @@ class DataHandler(MainHandler):
         pass
         """
         # read the DataFrame on file system
-        df = pd.read_csv(UPLOAD_DIR + '/' + self.get_arguments('file')[0])
+        df = pd.read_csv(UPLOAD_DIR + '/' + self.get_argument('file'))
 
         # create a new DataFrame using selected columns
         new_df = pd.DataFrame()
-        new_df['ds'] = df[self.get_arguments('ds')[0]]
-        new_df['y'] = df[self.get_arguments('y')[0]]
+        new_df['ds'] = df[self.get_argument('ds')
+        new_df['y'] = df[self.get_argument('y')
 
         try:
             prophet.fit(new_df)
-            future = prophet.make_future_dataframe(periods=int(self.get_arguments('futureDurationValue')[0]))
+            future = prophet.make_future_dataframe(periods=int(self.get_argument('futureDurationValue')))
             forecast = prophet.predict(future)
 
             # convert matplotlib figure to plotly
@@ -36,7 +36,7 @@ class DataHandler(MainHandler):
             components_plot_object = prophet.plot_components(forecast)
             components_plotly_fig = tls.mpl_to_plotly(components_plot_object)
 
-            if self.get_arguments('plotComponents')[0] == 'true':
+            if self.get_argument('plotComponents') == 'true':
                 trend_fig_data = [go.Scatter(
                     mode='lines',
                     x=components_plotly_fig['data'][0].x,

@@ -1,4 +1,5 @@
 from tornado.web import RequestHandler
+from pkg_resources import resource_filename
 
 
 class MainHandler(RequestHandler):
@@ -9,4 +10,5 @@ class MainHandler(RequestHandler):
         self.set_header("Access-Control-Allow-Credentials", "true")
 
     def get(self):
-        self.write("Prophetly Server")
+        index_template = resource_filename('prophetly.server', 'index.html')
+        self.render(index_template, author='pravj')

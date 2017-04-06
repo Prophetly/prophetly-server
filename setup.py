@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
 	name='prophetly-server',
-	version='0.1.0.e',
+	version='0.1.0.devs',
 	description='Interactive Time Series Forecasting Tool',
 	keywords='timeseries forecasting data',
 	author='Pravendra Singh',
@@ -10,6 +10,9 @@ setup(
 	url='https://github.com/pravj/prophetly-server',
 	packages=['prophetly', 'prophetly.server', 'prophetly.server.handlers'],
 	install_requires=['docopt == 0.6.2', 'pandas == 0.19.2', 'plotly == 2.0.6', 'tornado == 4.3'],
+	package_data={
+		'prophetly.server': ['index.html']
+	},
 	entry_points={
 		'console_scripts': ['prophetly-server = prophetly.prophetly:main']
 	},
