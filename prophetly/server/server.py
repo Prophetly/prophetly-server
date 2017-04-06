@@ -1,3 +1,4 @@
+import os
 import tornado.ioloop
 from tornado.web import Application
 
@@ -10,6 +11,10 @@ from handlers import *
 
 UPLOAD_DIR = '/Users/pravj-mac/Projects/prophetly-modules/prophetly-react/uploads'
 
+settings = {
+    "static_path": os.path.join(os.path.dirname(__file__), "static"),
+}
+
 def make_app():
     print 'make_app..'
     return Application([
@@ -18,7 +23,7 @@ def make_app():
         (r"/column/(.+)", ColumnHandler),
         (r"/data", DataHandler),
         (r"/filedata/(.+)", FileDataHandler),
-    ])
+    ], **settings)
 
 """
 if __name__ == "__main__":
