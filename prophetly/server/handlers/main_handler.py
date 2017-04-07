@@ -10,5 +10,5 @@ class MainHandler(RequestHandler):
         self.set_header("Access-Control-Allow-Credentials", "true")
 
     def get(self):
-        index_template = resource_filename('prophetly.server.static', 'template.html')
+        index_template = resource_filename('prophetly.server.static', 'index.html')
         self.render(index_template, prophetly_server_address='http://localhost:8888')
