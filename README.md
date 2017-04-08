@@ -14,6 +14,8 @@
 
 <p align="center">
   <a href="https://github.com/Prophetly/Prophetly"><img src="https://img.shields.io/badge/phase-develoment-brightgreen.svg"></a>
+
+  <a href="https://travis-ci.org/Prophetly/prophetly-server"><img src="https://travis-ci.org/Prophetly/prophetly-server.svg?branch=master"></a>
 </p>
 
 > Server implementation for [Prophetly](https://github.com/Prophetly/prophetly-client)
