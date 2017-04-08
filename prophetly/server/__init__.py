@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from server import create_server
+from server import ApplicationServer
 
 __all__ = [
-    'create_server'
+    'ApplicationServer'
 ]

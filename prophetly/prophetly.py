@@ -19,14 +19,12 @@ Options:
 """
 
 from docopt import docopt
-from tornado import ioloop
 
-from server import create_server
+from server import ApplicationServer
 
 def main():
     arguments = docopt(__doc__, version='Prophetly Server 0.1.23')
     print(arguments)
 
-    server = create_server(arguments)
-    server.listen(8888)
-    ioloop.IOLoop.current().start()
+    server = ApplicationServer(arguments)
+    server.start()
