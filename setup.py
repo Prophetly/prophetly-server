@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
 	name='prophetly-server',
-	version='0.1.18',
+	version='0.1.24',
 	description='Interactive Time Series Forecasting Tool',
 	keywords='timeseries forecasting data',
 	author='Pravendra Singh',

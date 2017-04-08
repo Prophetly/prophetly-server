@@ -8,7 +8,7 @@ Visit https://github.com/Prophetly/prophetly-server for feedback.
 
 
 Usage:
-  prophetly-server start [--host=<HOST>] [--port=<PORT>]
+  prophetly-server start [--port=<PORT>] [--upload_path=<PATH>]
   prophetly-server (-h | --help)
   prophetly-server --version
 
@@ -21,15 +21,12 @@ Options:
 from docopt import docopt
 from tornado import ioloop
 
-from server import make_app
+from server import create_server
 
 def main():
-    arguments = docopt(__doc__, version='Prophetly Server 0.1.18')
+    arguments = docopt(__doc__, version='Prophetly Server 0.1.23')
     print(arguments)
 
-    app = make_app()
-    app.listen(8888)
+    server = create_server(arguments)
+    server.listen(8888)
     ioloop.IOLoop.current().start()
-
-if __name__ == '__main__':
-    main()

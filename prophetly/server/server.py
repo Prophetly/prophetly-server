@@ -2,21 +2,20 @@ import os
 import tornado.ioloop
 from tornado.web import Application
 
-#TODO:use notification center to notify about import exceptions
-
 from handlers import *
 
-# global Prophet instance
-#prophet = Prophet()
+#TODO: use notification center to notify about import exceptions
 
-UPLOAD_DIR = '/Users/pravj-mac/Projects/prophetly-modules/prophetly-react/uploads'
+def create_server(arguments):
+    settings = {
+        "static_path": os.path.join(os.path.dirname(__file__), "static"),
+        "upload_path": os.path.join(os.path.dirname(__file__), "uploads"),
+    }
 
-settings = {
-    "static_path": os.path.join(os.path.dirname(__file__), "static"),
-}
+    # custom 'upload_path' supplied as command line flags
+    if arguments['--upload_path'] is not None:
+        settings['upload_path'] = arguments['--upload_path']
 
-def make_app():
-    print 'make_app..'
     return Application([
         (r"/", MainHandler),
         (r"/upload", UploadHandler),
@@ -24,10 +23,3 @@ def make_app():
         (r"/data", DataHandler),
         (r"/filedata/(.+)", FileDataHandler),
     ], **settings)
-
-"""
-if __name__ == "__main__":
-    app = make_app()
-    app.listen(8888)
-    tornado.ioloop.IOLoop.current().start()
-"""

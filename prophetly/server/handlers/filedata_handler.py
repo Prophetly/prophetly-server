@@ -1,12 +1,12 @@
+import os
 import pandas as pd
-from os import remove
 
 from main_handler import MainHandler
 
 
 class FileDataHandler(MainHandler):
     def get(self, file_param):
-        df = pd.read_csv(UPLOAD_DIR + '/' + file_param)
+        df = pd.read_csv(os.path.join(self.settings['upload_path'], file_param))
 
         cols = df.columns.tolist()
         res = {'columns': cols, 'rows': []}
@@ -21,7 +21,7 @@ class FileDataHandler(MainHandler):
 
     def post(self, file_param):
         try:
-            remove(UPLOAD_DIR + '/' + file_param)
+            os.remove(os.path.join(self.settings['upload_path'], file_param))
         except OSError:
             raise 'delete error'
 
