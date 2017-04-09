@@ -2,8 +2,8 @@ import os
 import tornado
 import SocketServer
 
-from handlers import *
-from prophetly.utils import PortInvalid, PortUnavailable
+import handlers
+from prophetly.utils import exceptions
 
 #TODO: use notification center to notify about import exceptions
 
@@ -17,6 +17,9 @@ class ApplicationServer(object):
             'upload_path': os.path.join(os.path.dirname(__file__), 'uploads'),
         }
 
+        self.initialize(arguments)
+
+    def initialize(self, arguments):
         # custom 'upload_path' supplied as command line flag
         _path_arg = arguments['--upload_path']
 
@@ -31,25 +34,25 @@ class ApplicationServer(object):
         elif _port_arg is not None and _port_arg.isdigit():
                 self.port = int(_port_arg)
         else:
-            raise PortInvalid('port {0} is invalid'.format(_port_arg))
+            raise exceptions.PortInvalid('port \"{0}\" is invalid'.format(_port_arg))
 
-    def create_server(self):
+    def _create_server(self):
         return tornado.web.Application([
-            (r"/", MainHandler),
-            (r"/upload", UploadHandler),
-            (r"/column/(.+)", ColumnHandler),
-            (r"/data", DataHandler),
-            (r"/filedata/(.+)", FileDataHandler),
+            (r"/", handlers.MainHandler),
+            (r"/upload", handlers.UploadHandler),
+            (r"/column/(.+)", handlers.ColumnHandler),
+            (r"/data", handlers.DataHandler),
+            (r"/filedata/(.+)", handlers.FileDataHandler),
         ], **self.settings)
 
     def start(self):
-        self.server = self.create_server()
+        self.server = self._create_server()
 
         try:
             self.server.listen(self.port)
         except SocketServer.socket.error as e:
             if e.args[0] == 48:
-                raise PortUnavailable("port {0} is already in use".format(self.port))
+                raise exceptions.PortUnavailable('port \"{0}\" is already in use'.format(self.port))
 
         tornado.ioloop.IOLoop.instance().start()
 

@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from exceptions import *
+import exceptions
 
 __all__ = [
-    'PortInvalid',
-    'PortUnavailable'
+	'exceptions'
 ]

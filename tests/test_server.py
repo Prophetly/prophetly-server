@@ -1,7 +1,7 @@
 import pytest
 
-from server import ApplicationServer
-from prophetly.utils import PortInvalid, PortUnavailable
+from prophetly.server import ApplicationServer
+from prophetly import utils
 
 
 cmd_arg_none = {'--port': None, '--upload_path': None}
@@ -34,5 +34,5 @@ def test_server_custom_port(server_with_valid_port_arg):
     assert server_with_valid_port_arg.port == 8888
 
 def test_server_invalid_port():
-    with pytest.raises(PortInvalid):
+    with pytest.raises(utils.exceptions.PortInvalid):
         ApplicationServer(cmd_arg_with_invalid_port)
