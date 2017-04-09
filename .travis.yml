@@ -3,6 +3,10 @@ os:
   - linux
 python:
   - "2.7"
+cache:
+  directories:
+    - $HOME/.pip-cache/
 before_install: "pip install -r dev-requirements.txt"
-install: "pip install -r requirements.txt"
+install: "pip install -r requirements.txt --cache-dir $HOME/.pip-cache"
+before_script: "python setup.py install"
 script: pytest tests
