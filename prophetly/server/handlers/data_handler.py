@@ -4,7 +4,13 @@ import pandas as pd
 import plotly.plotly as py
 import plotly.graph_objs as go
 import plotly.tools as tls
-from fbprophet import Prophet
+
+from prophetly.utils import exceptions
+
+try:
+    from fbprophet import Prophet
+except Exception as e:
+    raise exceptions.PackageUnavailable('Package "{0}" is missing')
 
 from main_handler import MainHandler
 

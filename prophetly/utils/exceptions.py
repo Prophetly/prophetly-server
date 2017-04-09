@@ -3,3 +3,7 @@ class PortUnavailable(Exception):
 
 class PortInvalid(Exception):
     pass
+
+
+class PackageUnavailable(Exception):
+    pass
