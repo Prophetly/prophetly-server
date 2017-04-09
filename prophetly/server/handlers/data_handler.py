@@ -1,24 +1,26 @@
+import os
 import ast
 import pandas as pd
 import plotly.plotly as py
 import plotly.graph_objs as go
 import plotly.tools as tls
-#from fbprophet import Prophet
+from fbprophet import Prophet
 
 from main_handler import MainHandler
 
 
 class DataHandler(MainHandler):
     def get(self):
-        pass
-        """
+        # create a new prophet instance
+        prophet = Prophet()
+
         # read the DataFrame on file system
-        df = pd.read_csv(UPLOAD_DIR + '/' + self.get_argument('file'))
+        df = pd.read_csv(os.path.join(self.settings['upload_path'], self.get_argument('file')))
 
         # create a new DataFrame using selected columns
         new_df = pd.DataFrame()
-        new_df['ds'] = df[self.get_argument('ds')
-        new_df['y'] = df[self.get_argument('y')
+        new_df['ds'] = df[self.get_argument('ds')]
+        new_df['y'] = df[self.get_argument('y')]
 
         try:
             prophet.fit(new_df)
@@ -72,4 +74,3 @@ class DataHandler(MainHandler):
             self.clear()
             self.set_status(500)
             self.finish("{0}: {1}".format(e.__class__.__name__, str(e)))
-            """

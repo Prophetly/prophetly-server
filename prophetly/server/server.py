@@ -15,6 +15,7 @@ class ApplicationServer(object):
         self.settings = {
             'static_path': os.path.join(os.path.dirname(__file__), 'static'),
             'upload_path': os.path.join(os.path.dirname(__file__), 'uploads'),
+            'port': self.port,
         }
 
         self.initialize(arguments)
@@ -35,6 +36,8 @@ class ApplicationServer(object):
                 self.port = int(_port_arg)
         else:
             raise exceptions.PortInvalid('port \"{0}\" is invalid'.format(_port_arg))
+
+        self.settings['port'] = self.port
 
     def _create_server(self):
         return tornado.web.Application([

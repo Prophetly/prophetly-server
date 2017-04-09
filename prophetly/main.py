@@ -20,11 +20,9 @@ Options:
 
 from docopt import docopt
 
-#import utils
-#from prophetly.server import ApplicationServer
-
 from . import __version__ as VERSION
 from . import server
+
 
 def main():
     arguments = docopt(__doc__, version='Prophetly Server {0}'.format(VERSION))

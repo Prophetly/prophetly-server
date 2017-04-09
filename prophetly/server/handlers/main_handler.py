@@ -11,4 +11,4 @@ class MainHandler(RequestHandler):
 
     def get(self):
         index_template = resource_filename('prophetly.server.static', 'index.html')
-        self.render(index_template, prophetly_server_address='http://localhost:8888')
+        self.render(index_template, prophetly_server_address='http://localhost:{0}'.format(self.settings['port']))
