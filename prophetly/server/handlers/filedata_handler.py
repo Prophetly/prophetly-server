@@ -2,6 +2,7 @@ import os
 import pandas as pd
 
 from .main_handler import MainHandler
+from prophetly.utils import exceptions
 
 
 class FileDataHandler(MainHandler):
@@ -23,6 +24,6 @@ class FileDataHandler(MainHandler):
         try:
             os.remove(os.path.join(self.settings['upload_path'], file_param))
         except OSError:
-            raise 'delete error'
+            raise exceptions.FileDeleteError('Unable to delete file {0}'.format(file_param))
 
         self.write({'status': 'OK'})

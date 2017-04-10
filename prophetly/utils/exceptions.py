@@ -7,3 +7,6 @@ class PortInvalid(Exception):
 
 class PackageUnavailable(Exception):
     pass
+
+class FileDeleteError(Exception):
+    pass

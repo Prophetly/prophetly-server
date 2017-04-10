@@ -2,7 +2,7 @@ import os
 import json
 import pandas as pd
 
-from main_handler import MainHandler
+from .main_handler import MainHandler
 
 
 class ColumnHandler(MainHandler):
