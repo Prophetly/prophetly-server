@@ -59,11 +59,11 @@ def test_server_invalid_port():
 def test_server_side_rendering(http_client, base_url):
     response = yield http_client.fetch(base_url)
 
-    response_match = re.search(r'http://localhost:([0-9]+)', response.body)
+    response_match = re.search(r'http://localhost:([0-9]+)', response.body.decode('utf-8'))
     assert response_match.group(1) == cmd_arg_with_valid_port['--port']
 
 @pytest.mark.gen_test
 def test_empty_upload_path(http_client, base_url):
     response = yield http_client.fetch('{0}/upload'.format(base_url))
-    response_dict = json.loads(response.body)
+    response_dict = json.loads(response.body.decode('utf-8'))
     assert len(response_dict['files']) == 0
