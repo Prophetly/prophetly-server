@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-from main_handler import MainHandler
+from .main_handler import MainHandler
 
 
 class FileDataHandler(MainHandler):

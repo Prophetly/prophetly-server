@@ -26,7 +26,6 @@ from . import server
 
 def main():
     arguments = docopt(__doc__, version='Prophetly Server {0}'.format(VERSION))
-    print(arguments)
 
     s = server.ApplicationServer(arguments)
     s.start()

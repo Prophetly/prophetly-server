@@ -1,11 +1,15 @@
 import os
 import tornado
-import SocketServer
 
-import handlers
+from . import handlers
 from prophetly.utils import exceptions
+from prophetly.utils import sys_info
 
-#TODO: use notification center to notify about import exceptions
+if sys_info.version() == 2:
+    import SocketServer as socket_server
+elif sys_info.version() == 3:
+    import socketserver as socket_server
+
 
 class ApplicationServer(object):
     def __init__(self, arguments):
@@ -40,6 +44,7 @@ class ApplicationServer(object):
         self.settings['port'] = self.port
 
     def _create_server(self):
+        #(r"/static/media/(.*)", tornado.web.StaticFileHandler, {'path': os.path.join(self.settings['static_path'], 'media')}),
         return tornado.web.Application([
             (r"/", handlers.MainHandler),
             (r"/upload", handlers.UploadHandler),
@@ -53,9 +58,11 @@ class ApplicationServer(object):
 
         try:
             self.server.listen(self.port)
-        except SocketServer.socket.error as e:
+        except socket_server.socket.error as e:
             if e.args[0] == 48:
                 raise exceptions.PortUnavailable('port \"{0}\" is already in use'.format(self.port))
+
+        print("Visit http://localhost:{0} ...".format(self.port))
 
         tornado.ioloop.IOLoop.instance().start()
 

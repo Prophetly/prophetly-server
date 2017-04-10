@@ -5,17 +5,16 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 import plotly.tools as tls
 
+from prophetly.utils import sys_info
 from prophetly.utils import exceptions
 
 try:
     from fbprophet import Prophet
 except Exception as e:
-    if os.environ.get('EXEC_ENV') == 'TRAVIS':
-        pass
-    else:
+    if not sys_info.is_env_build():
         raise exceptions.PackageUnavailable('Package "{0}" is missing'.format('fbprophet'))
 
-from main_handler import MainHandler
+from .main_handler import MainHandler
 
 
 class DataHandler(MainHandler):

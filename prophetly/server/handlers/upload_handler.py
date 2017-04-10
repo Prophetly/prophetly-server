@@ -1,7 +1,7 @@
 import os
 import json
 
-from main_handler import MainHandler
+from .main_handler import MainHandler
 
 
 class UploadHandler(MainHandler):
