@@ -2,6 +2,7 @@ import re
 import json
 import pytest
 
+from prophetly import __version__
 from prophetly import server
 from prophetly import utils
 
@@ -55,6 +56,10 @@ def test_server_invalid_port():
     with pytest.raises(utils.exceptions.PortInvalid):
         server.ApplicationServer(cmd_arg_with_invalid_port)
 
+def test_server_signature_version():
+    signature_match = re.search(r'Prophetly Server v(.+)', utils.signature._package_signature)
+    assert signature_match.group(1) == __version__
+
 @pytest.mark.gen_test
 def test_server_side_rendering(http_client, base_url):
     response = yield http_client.fetch(base_url)
@@ -67,3 +72,11 @@ def test_empty_upload_path(http_client, base_url):
     response = yield http_client.fetch('{0}/upload'.format(base_url))
     response_dict = json.loads(response.body.decode('utf-8'))
     assert len(response_dict['files']) == 0
+
+"""
+@pytest.mark.gen_test
+def test_upload_post(http_client, base_url):
+    req_body = {'files': }
+    response = yield http_client.fetch('{0}/upload'.format(base_url), method='POST', body="{'files': {'file': [2,3]}}")
+    assert response == base_url
+"""

@@ -7,6 +7,8 @@ from .main_handler import MainHandler
 class UploadHandler(MainHandler):
     def post(self):
         try:
+            print(self.request)
+            print(self.request.files)
             file_info = self.request.files['file'][0]
 
             with open(os.path.join(self.settings['upload_path'], file_info.filename), 'w') as req_file:
