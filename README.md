@@ -18,6 +18,12 @@
   <a href="https://travis-ci.org/Prophetly/prophetly-server"><img src="https://travis-ci.org/Prophetly/prophetly-server.svg?branch=master"></a>
 </p>
 
-> Server implementation for [Prophetly](https://github.com/Prophetly/prophetly-client)
+> PyPI Package for Prophetly powered by tornado and [prophetly-client](https://github.com/Prophetly/prophetly-client)
 
-![Prophetly](http://g.recordit.co/SqxPgjqdjv.gif)
+```bash
+ ___                  _          _    _
+| _ \ _ _  ___  _ __ | |_   ___ | |_ | | _  _
+|  _/| '_|/ _ \| '_ \| ' \ / -_)|  _|| || || |
+|_|  |_|  \___/| .__/|_||_|\___| \__||_| \_, |
+               |_|                        |__/
+```

@@ -2,8 +2,7 @@ import os
 import tornado
 
 from . import handlers
-from prophetly.utils import exceptions
-from prophetly.utils import sys_info
+from prophetly.utils import exceptions, sys_info, signature
 
 if sys_info.version() == 2:
     import SocketServer as socket_server
@@ -44,7 +43,6 @@ class ApplicationServer(object):
         self.settings['port'] = self.port
 
     def _create_server(self):
-        #(r"/static/media/(.*)", tornado.web.StaticFileHandler, {'path': os.path.join(self.settings['static_path'], 'media')}),
         return tornado.web.Application([
             (r"/", handlers.MainHandler),
             (r"/upload", handlers.UploadHandler),
@@ -62,7 +60,7 @@ class ApplicationServer(object):
             if e.args[0] == 48:
                 raise exceptions.PortUnavailable('port \"{0}\" is already in use'.format(self.port))
 
-        print("Visit http://localhost:{0} ...".format(self.port))
+        signature.package_signature(self.port)
 
         tornado.ioloop.IOLoop.instance().start()
 
