@@ -17,7 +17,7 @@ class ApplicationServer(object):
 
         self.settings = {
             'static_path': os.path.join(os.path.dirname(__file__), 'static'),
-            'upload_path': os.path.join(os.path.dirname(__file__), 'uploads'),
+            'upload_path': os.path.join(os.getcwd(), 'uploads'),
             'port': self.port,
         }
 
