@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 from prophetly import __version__
 
-with open(path.join(path.abspath(path.dirname(__file__)), 'README.rst'), encoding='utf-8') as f:
+with open(path.join(path.abspath(path.dirname(__file__)), 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
