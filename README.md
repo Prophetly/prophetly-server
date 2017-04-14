@@ -13,16 +13,14 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Prophetly/Prophetly"><img src="https://img.shields.io/badge/phase-develoment-brightgreen.svg"></a>
-
-  <a href="https://travis-ci.org/Prophetly/prophetly-server"><img src="https://travis-ci.org/Prophetly/prophetly-server.svg?branch=master"></a>
-
-  <a href="https://github.com/Prophetly/prophetly-server"><img src="https://img.shields.io/badge/Python-2.7,%203.4,%203.5,%203.6-brightgreen.svg"></a>
-
-  <a href="https://github.com/Prophetly/prophetly-server"><img src="https://img.shields.io/badge/format-wheel-brightgreen.svg"></a>
+  <a href="https://github.com/Prophetly/Prophetly">
+    <img src="https://img.shields.io/badge/phase-develoment-brightgreen.svg">
+  </a>
 </p>
 
-> PyPI Package for Prophetly powered by tornado and [prophetly-client](https://github.com/Prophetly/prophetly-client)
+## Prophetly Server [![Build Status][build-img]][build] [![Supported Version][version-img]][version] [![Distribution Format][format-img]][format]
+
+PyPI Package for Prophetly powered by tornado and [prophetly-client](https://github.com/Prophetly/prophetly-client)
 
 ```bash
  ___                  _          _    _
@@ -41,3 +39,42 @@ For now the package is only available on [testpypi](https://testpypi.python.org/
 ```bash
 pip install --extra-index-url https://testpypi.python.org/pypi prophetly-server
 ```
+
+### Usage
+
+```bash
+prophetly-server start
+```
+
+```bash
+ __________________
+| Prophetly Server |
+
+Command Line Interface to Prophetly\'s Time Series Forecasting Tool.
+
+Visit https://github.com/Prophetly/prophetly-server for feedback.
+
+Usage:
+  prophetly-server start [--port=<PORT>] [--upload_path=<PATH>]
+  prophetly-server (-h | --help)
+  prophetly-server --version
+
+Options:
+  -h --help     Show this screen.
+  --version     Show version.
+```
+
+##### Customizing the Port
+
+The default port for `prophetly-server` is **9009**, you can change it using the `--port=<PORT>` flag.
+
+##### Upload Directory
+
+By default, `prophetly-server` will create a directory named `uploads` in the current working directory. You can point it to a different directory using `--upload_path=<PATH>` flag.
+
+[build-img]: https://travis-ci.org/Prophetly/prophetly-server.svg?branch=master
+[build]: https://travis-ci.org/Prophetly/prophetly-server
+[version-img]: https://img.shields.io/badge/Python-2.7,%203.4,%203.5,%203.6-brightgreen.svg
+[version]: https://github.com/Prophetly/prophetly-server
+[format-img]: https://img.shields.io/badge/format-wheel-brightgreen.svg
+[format]: https://github.com/Prophetly/prophetly-server
