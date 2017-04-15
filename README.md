@@ -29,10 +29,14 @@ PyPI Package for Prophetly powered by tornado and [prophetly-client](https://git
 |_|  |_|  \___/| .__/|_||_|\___| \__||_| \_, |
                |_|                       |__/
 
-Prophetly Server v0.0.2.a1
+Prophetly Server v0.0.3.a1
 ```
 
 ### Installation
+
+##### Prophet
+
+You have to install [Prophet's Python implementation](https://facebookincubator.github.io/prophet/docs/installation.html#installation-in-python) and [PyStan](http://pystan.readthedocs.io/en/latest/installation_beginner.html) according to your system.
 
 For now the package is only available on [testpypi](https://testpypi.python.org/pypi/prophetly-server).
 

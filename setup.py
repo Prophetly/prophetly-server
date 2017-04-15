@@ -18,11 +18,11 @@ setup(
 	url='https://github.com/pravj/prophetly-server',
 	packages=find_packages(exclude=['tests*']),
 	install_requires=[
-		'docopt == 0.6.2',
-		'pandas == 0.19.2',
-		'plotly == 2.0.6',
+		'docopt',
+		'pandas',
+		'plotly',
 		'tornado',
-		'matplotlib == 2.0.0',
+		'matplotlib',
 	],
 	package_data={
 		'prophetly.server.static': ['*.html', 'css/*.css', 'js/*.js', 'favicon.ico', 'media/*.svg'],
